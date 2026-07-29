@@ -1,0 +1,88 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+enum Role {
+  ADMIN
+  SUPER_ADMIN
+}
+
+enum Gender {
+  LAKI_LAKI
+  PEREMPUAN
+}
+
+enum Education {
+  SD
+  SMP
+  SMA
+  DIPLOMA
+  S1
+  S2_S3
+}
+
+enum ServiceCategory {
+  DOMAIN_SUBDOMAIN
+  E_GOVERNMENT
+  COMMAND_CENTER
+  INFORMASI_KOMUNIKASI
+  LAINNYA
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  username  String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+}
+
+model GuestBook {
+  id            String          @id @default(cuid())
+  fullName      String
+  whatsapp      String
+  age           Int
+  gender        Gender
+  education     Education
+  occupation    String
+  service       ServiceCategory
+  customService String?
+  createdAt     DateTime        @default(now())
+  
+  surveyResponse SurveyResponse?
+}
+
+model SurveyQuestion {
+  id        String         @id @default(cuid())
+  unsurCode String         // U1 s/d U9
+  question  String
+  isActive  Boolean        @default(true)
+  createdAt DateTime       @default(now())
+  answers   SurveyAnswer[]
+}
+
+model SurveyResponse {
+  id          String         @id @default(cuid())
+  guestBookId String?        @unique
+  guestBook   GuestBook?     @relation(fields: [guestBookId], references: [id], onDelete: SetNull)
+  feedback    String?
+  createdAt   DateTime       @default(now())
+  answers     SurveyAnswer[]
+}
+
+model SurveyAnswer {
+  id         String         @id @default(cuid())
+  responseId String
+  response   SurveyResponse @relation(fields: [responseId], references: [id], onDelete: Cascade)
+  questionId String
+  question   SurveyQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  score      Int            // 1 s/d 4
+}
