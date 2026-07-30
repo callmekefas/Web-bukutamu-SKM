@@ -14,6 +14,8 @@ import {
   Building2,
   Sparkles
 } from 'lucide-react';
+// IMPORT SERVER ACTION YANG SUDAH DIBUAT
+import { createGuest } from '@/lib/actions/guests'; 
 
 export default function GuestbookPage() {
   const router = useRouter();
@@ -44,21 +46,20 @@ export default function GuestbookPage() {
     setErrorMsg('');
 
     try {
-      const res = await fetch('/api/guestbook', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+      // Panggil Server Action langsung, tidak pakai fetch ke /api
+      const result = await createGuest(formData);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || 'Gagal menyimpan data buku tamu');
+      if (!result.success) {
+        throw new Error(result.message || 'Gagal menyimpan data buku tamu');
       }
 
       setSubmitted(true);
-    } catch (err: any) {
-      setErrorMsg(err.message || 'Terjadi kesalahan. Silakan coba lagi.');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setErrorMsg(err.message);
+      } else {
+        setErrorMsg('Terjadi kesalahan. Silakan coba lagi.');
+      }
     } finally {
       setLoading(false);
     }
