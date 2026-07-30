@@ -2,8 +2,9 @@
 
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
-// 1. FUNGSI EDIT PERTANYAAN
+// 1. FUNGSI EDIT PERTANYAAN (Kode asli milikmu)
 export async function updateQuestion(
   id: string,
   data: { question: string; isActive: boolean; displayOrder: number }
@@ -27,7 +28,7 @@ export async function updateQuestion(
   }
 }
 
-// 2. FUNGSI AUTO-GENERATE (Untuk mengisi database yang masih kosong)
+// 2. FUNGSI AUTO-GENERATE (Kode asli milikmu)
 export async function seedDefaultQuestions() {
   const defaults = [
     { code: 'U1', text: 'Bagaimana pendapat Anda tentang kesesuaian persyaratan pelayanan dengan jenis pelayanannya?' },
@@ -60,4 +61,48 @@ export async function seedDefaultQuestions() {
     console.error("Gagal generate pertanyaan:", error);
     return { success: false, message: "Gagal men-generate pertanyaan." };
   }
+}
+
+// ==========================================
+// TAMBAHAN BARU UNTUK FITUR CRUD
+// ==========================================
+
+// 3. FUNGSI TAMBAH PERTANYAAN BARU
+export async function addQuestion(formData: FormData) {
+  const unsurCode = formData.get("unsurCode") as string;
+  const question = formData.get("question") as string;
+  const displayOrder = parseInt(formData.get("displayOrder") as string);
+
+  try {
+    await prisma.surveyQuestion.create({
+      data: { unsurCode, question, displayOrder, isActive: true },
+    });
+  } catch (error) {
+    console.error("Gagal menambah pertanyaan:", error);
+  }
+
+  revalidatePath("/dashboard/surveys/questions");
+  revalidatePath("/survey");
+  redirect("/dashboard/surveys/questions"); // Kembali ke halaman tabel
+}
+
+// 4. FUNGSI TOGGLE STATUS (ON/OFF)
+export async function toggleQuestionStatus(id: string, currentStatus: boolean) {
+  await prisma.surveyQuestion.update({
+    where: { id },
+    data: { isActive: !currentStatus },
+  });
+  
+  revalidatePath("/dashboard/surveys/questions");
+  revalidatePath("/survey");
+}
+
+// 5. FUNGSI HAPUS PERTANYAAN
+export async function deleteQuestion(id: string) {
+  await prisma.surveyQuestion.delete({
+    where: { id },
+  });
+  
+  revalidatePath("/dashboard/surveys/questions");
+  revalidatePath("/survey");
 }
