@@ -37,38 +37,47 @@ async function main() {
       {
         unsurCode: 'U1',
         question: 'Bagaimana kesesuaian persyaratan pelayanan dengan jenis pelayanannya?',
+        displayOrder: 1,
       },
       {
         unsurCode: 'U2',
         question: 'Bagaimana kemudahan prosedur pelayanan di instansi ini?',
+        displayOrder: 2,
       },
       {
         unsurCode: 'U3',
         question: 'Bagaimana kecepatan waktu dalam mendapatkan pelayanan?',
+        displayOrder: 3,
       },
       {
         unsurCode: 'U4',
         question: 'Bagaimana kejelasan dan kejelasan biaya/tarif pelayanan (bebas pungli)?',
+        displayOrder: 4,
       },
       {
         unsurCode: 'U5',
         question: 'Bagaimana kesesuaian antara hasil pelayanan yang diterima dengan ketentuan?',
+        displayOrder: 5,
       },
       {
         unsurCode: 'U6',
         question: 'Bagaimana kemampuan dan keterampilan petugas dalam memberikan pelayanan?',
+        displayOrder: 6,
       },
       {
         unsurCode: 'U7',
         question: 'Bagaimana sikap dan perilaku petugas terkait kesopanan dan keramahan?',
+        displayOrder: 7,
       },
       {
         unsurCode: 'U8',
         question: 'Bagaimana kualitas penanganan pengaduan, saran, dan masukan pengguna?',
+        displayOrder: 8,
       },
       {
         unsurCode: 'U9',
         question: 'Bagaimana kualitas dan kenyamanan sarana serta prasarana pelayanan?',
+        displayOrder: 9,
       },
     ],
   });
