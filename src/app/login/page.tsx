@@ -19,7 +19,7 @@ export default function LoginPage() {
           
           {/* --- Bagian Logo & Nama Instansi (Menyamping) --- */}
           <div className="flex items-center gap-4">
-            {/* Box Logo dengan sedikit rounding agar mirip di gambar */}
+            {/* Box Logo dengan sedikit rounding */}
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-blue-50/50 rounded-2xl border border-blue-100 shadow-sm p-2">
               <Image
                 src="/logo.png" 
