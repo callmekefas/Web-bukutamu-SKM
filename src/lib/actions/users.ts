@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
+import { getSession } from "@/lib/auth";
 
 // 1. Tambah User Baru
 export async function createUser(formData: FormData) {
@@ -36,6 +37,14 @@ export async function createUser(formData: FormData) {
 // 2. Hapus User
 export async function deleteUser(id: string) {
   try {
+    const session = await getSession();
+
+    // CEGAT: Jika ID yang mau dihapus adalah ID dia sendiri, batalkan!
+    if (session?.userId === id) {
+      console.error("Ditolak: Super Admin tidak boleh menghapus akunnya sendiri.");
+      return; 
+    }
+
     await prisma.user.delete({
       where: { id },
     });

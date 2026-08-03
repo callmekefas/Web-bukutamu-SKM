@@ -18,62 +18,62 @@ export default function HomePage() {
       {/* SECTION 1: HERO / BANNER HEADER 
         - flex flex-col justify-center memastikan konten tepat di tengah vertikal & sejajar dengan kanan
       */}
-<section className="lg:w-5/12 bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 text-white p-6 sm:p-10 lg:p-14 flex flex-col justify-center rounded-b-[2.5rem] lg:rounded-b-none lg:min-h-screen relative overflow-hidden shadow-xl lg:shadow-none">
+      <section className="lg:w-5/12 bg-gradient-to-br from-cyan-600 via-blue-600 to-indigo-700 text-white p-6 sm:p-10 lg:p-14 flex flex-col justify-center rounded-b-[2.5rem] lg:rounded-b-none lg:min-h-screen relative overflow-hidden shadow-xl lg:shadow-none">
   
-  {/* Pattern Background Grid */}
-  <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none" />
+        {/* Pattern Background Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff12_1px,transparent_1px),linear-gradient(to_bottom,#ffffff12_1px,transparent_1px)] bg-[size:28px_28px] pointer-events-none" />
 
-  {/* Konten Hero - Menggunakan lg:-mt-10 untuk sedikit menaikkan posisi agar sejajar presisi dengan kanan */}
-  <div className="relative z-10 space-y-6 sm:space-y-8 my-auto lg:my-0 lg:-mt-60">
-    
-    {/* Logo & Nama Instansi */}
-    <div className="flex items-center gap-4">
-      <div className="w-16 h-16 sm:w-25 sm:h-25 bg-white/10 backdrop-blur-md rounded-2xl p-2.5 border border-white/20 flex items-center justify-center shrink-0 shadow-inner">
-        <Image 
-          src="/logo.png" 
-          alt="Logo Instansi" 
-          width={80} 
-          height={80} 
-          className="object-contain w-full h-full"
-          priority
-        />
-      </div>
-      <div>
-        <h2 className="text-xs sm:text-sm font-extrabold tracking-wide uppercase text-cyan-100 leading-tight">
-          Dinas Komunikasi, Informatika, Persandian, dan Statistika
-        </h2>
-        <p className="text-[11px] sm:text-xs text-blue-200 font-light mt-0.5">
-          Provinsi Sulawesi Utara
-        </p>
-      </div>
-    </div>
+        {/* Konten Hero - Menggunakan lg:-mt-10 untuk sedikit menaikkan posisi agar sejajar presisi dengan kanan */}
+        <div className="relative z-10 space-y-6 sm:space-y-8 my-auto lg:my-0 lg:-mt-60">
+          
+          {/* Logo & Nama Instansi */}
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 sm:w-25 sm:h-25 bg-white/10 backdrop-blur-md rounded-2xl p-2.5 border border-white/20 flex items-center justify-center shrink-0 shadow-inner">
+              <Image 
+                src="/logo.png" 
+                alt="Logo Instansi" 
+                width={80} 
+                height={80} 
+                className="object-contain w-full h-full"
+                priority
+              />
+            </div>
+            <div>
+              <h2 className="text-xs sm:text-sm font-extrabold tracking-wide uppercase text-cyan-100 leading-tight">
+                Dinas Komunikasi, Informatika, Persandian, dan Statistika
+              </h2>
+              <p className="text-[11px] sm:text-xs text-blue-200 font-light mt-0.5">
+                Provinsi Sulawesi Utara
+              </p>
+            </div>
+          </div>
 
-    {/* Judul Utama & Penjelasan */}
-    <div className="space-y-3 pt-2">
-      <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
-        Buku Tamu & <br className="hidden sm:inline" />
-        <span className="text-cyan-200">Survei Kepuasan</span>
-      </h1>
-      <p className="text-xs sm:text-sm lg:text-base text-blue-100 leading-relaxed font-light max-w-lg">
-        Platform digital resmi pelayanan tamu dan penilaian Indeks Kepuasan Masyarakat (IKM) sesuai standar PermenPANRB No. 14 Tahun 2017.
-      </p>
-    </div>
+          {/* Judul Utama & Penjelasan */}
+          <div className="space-y-3 pt-2">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+              Buku Tamu & <br className="hidden sm:inline" />
+              <span className="text-cyan-200">Survei Kepuasan</span>
+            </h1>
+            <p className="text-xs sm:text-sm lg:text-base text-blue-100 leading-relaxed font-light max-w-lg">
+              Platform digital resmi pelayanan tamu dan penilaian Indeks Kepuasan Masyarakat (IKM) sesuai standar PermenPANRB No. 14 Tahun 2017.
+            </p>
+          </div>
 
-    {/* Badge Layanan Tambahan */}
-    <div className="pt-2 hidden sm:block">
-      <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-xs font-medium text-cyan-100 border border-white/15">
-        <Building2 className="w-4 h-4 text-cyan-300" />
-        <span>Layanan Resepsionis Digital Diskominfo</span>
-      </div>
-    </div>
+          {/* Badge Layanan Tambahan */}
+          <div className="pt-2 hidden sm:block">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-xs font-medium text-cyan-100 border border-white/15">
+              <Building2 className="w-4 h-4 text-cyan-300" />
+              <span>Layanan Resepsionis Digital Diskominfo</span>
+            </div>
+          </div>
 
-  </div>
+        </div>
 
-  {/* Footer khusus Tampilan Desktop */}
-  <div className="hidden lg:block absolute bottom-6 left-14 right-14 z-10 text-xs text-blue-200/80 border-t border-white/10 pt-3">
-    © {new Date().getFullYear()} Diskominfo Provinsi Sulawesi Utara. All rights reserved.
-  </div>
-</section>
+        {/* Footer khusus Tampilan Desktop */}
+        <div className="hidden lg:block absolute bottom-6 left-14 right-14 z-10 text-xs text-blue-200/80 border-t border-white/10 pt-3">
+          © {new Date().getFullYear()} Diskominfo Provinsi Sulawesi Utara. All rights reserved.
+        </div>
+      </section>
 
 
       {/* 
@@ -149,7 +149,7 @@ export default function HomePage() {
 
             {/* 3. Statistik Layanan Publik */}
             <Link 
-              href="/statistics" 
+              href="/statistik"  // <--- INI YANG DIUBAH DARI /statistics MENJADI /statistik
               className="group block bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-200/80 hover:shadow-md hover:border-amber-500 transition-all active:scale-[0.99]"
             >
               <div className="flex items-center justify-between">
