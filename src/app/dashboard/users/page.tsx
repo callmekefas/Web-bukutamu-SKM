@@ -1,12 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
-import { UserPlus, ShieldAlert, Trash2, ShieldCheck } from "lucide-react";
-import { deleteUser } from "@/lib/actions/users";
+import { UserPlus, ShieldAlert, ShieldCheck } from "lucide-react";
 import { requireSuperAdmin } from "@/lib/auth";
+import DeleteUserButton from "@/components/DeleteUserButton";
 
 export default async function UsersPage() {
-  // 1. KUNCI HALAMAN: Panggil satpamnya di sini!
-  await requireSuperAdmin();
+  // 1. KUNCI HALAMAN & AMBIL DATA SESI SAAT INI
+  const session = await requireSuperAdmin();
 
   // 2. Ambil semua data user, urutkan agar Super Admin di atas
   const users = await prisma.user.findMany({
@@ -42,7 +42,13 @@ export default async function UsersPage() {
             <tbody className="divide-y divide-slate-100">
               {users.map((user) => (
                 <tr key={user.id} className="hover:bg-slate-50 transition-colors">
-                  <td className="px-6 py-4 font-bold text-slate-900">{user.name}</td>
+                  <td className="px-6 py-4 font-bold text-slate-900">
+                    {user.name}
+                    {/* Beri tanda jika ini adalah akun yang sedang dipakai */}
+                    {user.id === session.userId && (
+                      <span className="ml-2 text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">Anda</span>
+                    )}
+                  </td>
                   <td className="px-6 py-4 text-slate-600 font-medium">@{user.username}</td>
                   <td className="px-6 py-4 text-center">
                     {user.role === "SUPER_ADMIN" ? (
@@ -57,15 +63,17 @@ export default async function UsersPage() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-center">
-                      <form action={deleteUser.bind(null, user.id)}>
-                        <button 
-                          type="submit" 
-                          title="Hapus Akun" 
-                          className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-md transition-colors"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </form>
+                      {/* LOGIKA PENCEGAHAN: Hilangkan tombol hapus jika ID-nya sama dengan sesi */}
+                      {user.id !== session.userId ? (
+                        
+                        /* --- INI ADALAH KOMPONEN POPUP MODERN YANG BARU --- */
+                        <DeleteUserButton userId={user.id} />
+                        
+                      ) : (
+                        <span className="text-xs text-slate-400 font-medium cursor-not-allowed" title="Tidak bisa menghapus akun sendiri">
+                          Aktif
+                        </span>
+                      )}
                     </div>
                   </td>
                 </tr>
