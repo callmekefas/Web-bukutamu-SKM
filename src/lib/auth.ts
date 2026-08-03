@@ -48,3 +48,17 @@ export async function requireAuth() {
   }
   return session;
 }
+
+// Helper untuk proteksi halaman khusus SUPER ADMIN
+export async function requireSuperAdmin() {
+  // 1. Pastikan pengguna sudah login terlebih dahulu
+  const session = await requireAuth();
+  
+  // 2. Jika dia sudah login tapi BUKAN Super Admin, kembalikan ke dashboard utama
+  if (session.role !== 'SUPER_ADMIN') {
+    redirect('/dashboard');
+  }
+  
+  // 3. Jika dia adalah Super Admin, izinkan akses dan kembalikan data sesinya
+  return session;
+}
