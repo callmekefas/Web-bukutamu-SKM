@@ -45,7 +45,7 @@ export default function LoginPage() {
           <div className="space-y-1.5">
             <CardTitle className="text-2xl font-bold tracking-tight">Login Admin</CardTitle>
             <CardDescription>
-              Masukkan username dan password untuk mengelola E-Bukutamu & SKM
+              Masukkan username dan password untuk Login
             </CardDescription>
           </div>
         </CardHeader>

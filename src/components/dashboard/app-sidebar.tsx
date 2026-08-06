@@ -11,7 +11,6 @@ import {
   Users,
   ClipboardList,
   FileText,
-  Settings,
   UserCog,
   LogOut,
   LogOutIcon, // <-- Tambahan Icon untuk popup
@@ -33,7 +32,6 @@ const menus = [
   { title: "Survey Management", href: "/dashboard/surveys/questions", icon: ClipboardList },
   { title: "Reports", href: "/dashboard/reports", icon: FileText },
   { title: "User Management", href: "/dashboard/users", icon: UserCog },
-  { title: "Settings", href: "/dashboard/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
@@ -85,7 +83,7 @@ export function AppSidebar() {
         </button>
       </SidebarFooter>
 
-      {/* --- POPUP LOGOUT MODERN --- */}
+      {/* --- POPUP LOGOUT --- */}
       {showLogoutModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm overflow-hidden animate-in zoom-in-95 duration-200">

@@ -54,7 +54,7 @@ export default async function DashboardOverview() {
     <div className="space-y-8">
       <div>
         <h2 className="text-3xl font-bold tracking-tight text-slate-800">Dashboard Overview</h2>
-        <p className="text-slate-500 mt-2">Ringkasan data pengunjung Buku Tamu SKM.</p>
+        <p className="text-slate-500 mt-2">Ringkasan data pengunjung.</p>
       </div>
 
       {/* Grid Kartu Statistik */}
