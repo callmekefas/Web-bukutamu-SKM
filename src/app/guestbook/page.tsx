@@ -28,10 +28,10 @@ export default function GuestbookPage() {
     name: '',
     phone: '',
     age: '',
-    gender: 'LAKI_LAKI',
-    education: 'S1',
-    occupation: 'PNS',
-    serviceCategory: 'E_GOVERNMENT',
+    gender: '',
+    education: '',
+    occupation: '',
+    serviceCategory: '',
     purpose: '',
   });
 
@@ -217,10 +217,12 @@ export default function GuestbookPage() {
                   </label>
                   <select
                     name="gender"
+                    required
                     value={formData.gender}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900"
                   >
+                    <option value="" disabled>-- Pilih Jenis Kelamin --</option>
                     <option value="LAKI_LAKI">Laki-Laki</option>
                     <option value="PEREMPUAN">Perempuan</option>
                   </select>
@@ -232,10 +234,12 @@ export default function GuestbookPage() {
                   </label>
                   <select
                     name="education"
+                    required
                     value={formData.education}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900"
                   >
+                    <option value="" disabled>-- Pilih Pendidikan --</option>
                     <option value="SD">SD / Sederajat</option>
                     <option value="SMP">SMP / Sederajat</option>
                     <option value="SMA">SMA / SMK / Sederajat</option>
@@ -254,10 +258,12 @@ export default function GuestbookPage() {
                   </label>
                   <select
                     name="occupation"
+                    required
                     value={formData.occupation}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900"
                   >
+                    <option value="" disabled>-- Pilih Pekerjaan --</option>
                     <option value="PNS">ASN / PNS / TNI / Polri</option>
                     <option value="SWASTA">Pegawai Swasta</option>
                     <option value="WIRASWASTA">Wiraswasta / Usahawan</option>
@@ -272,10 +278,12 @@ export default function GuestbookPage() {
                   </label>
                   <select
                     name="serviceCategory"
+                    required
                     value={formData.serviceCategory}
                     onChange={handleChange}
                     className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-900"
                   >
+                    <option value="" disabled>-- Pilih Jenis Layanan --</option>
                     <option value="DOMAIN_SUBDOMAIN">Pengajuan Domain & Subdomain</option>
                     <option value="E_GOVERNMENT">Layanan SPBE / E-Government</option>
                     <option value="COMMAND_CENTER">Layanan Command Center & IT</option>
