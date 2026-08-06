@@ -34,6 +34,21 @@ enum ServiceCategory {
   LAINNYA
 }
 
+// ==========================================
+// KATEGORI UNSUR SKM (Baru ditambahkan)
+// ==========================================
+enum SKMCategory {
+  U1_PERSYARATAN
+  U2_PROSEDUR
+  U3_WAKTU_PELAYANAN
+  U4_BIAYA_TARIF
+  U5_PRODUK_SPESIFIKASI
+  U6_KOMPETENSI_PELAKSANA
+  U7_PERILAKU_PELAKSANA
+  U8_PENANGANAN_PENGADUAN
+  U9_SARANA_PRASARANA
+}
+
 model User {
   id       String @id @default(cuid())
   name     String
@@ -70,6 +85,11 @@ model SurveyQuestion {
 
   unsurCode String @unique
   question  String
+  
+  // ==========================================
+  // Kolom Kategori (Baru ditambahkan)
+  // ==========================================
+  category  SKMCategory @default(U1_PERSYARATAN)
 
   displayOrder Int
 
