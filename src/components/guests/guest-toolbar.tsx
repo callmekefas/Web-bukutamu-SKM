@@ -1,8 +1,7 @@
 "use client";
 
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Search, Download } from "lucide-react";
+import { Search } from "lucide-react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import {
@@ -12,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import ExportGuestButton from "@/components/ExportGuestButton";
 
 export function GuestToolbar() {
   const searchParams = useSearchParams();
@@ -78,12 +78,9 @@ export function GuestToolbar() {
         </Select>
       </div>
       
-      {/* Tombol Export */}
+      {/* Tombol Export yang Sudah Diperbaiki */}
       <div className="flex items-center space-x-2 w-full sm:w-auto justify-end">
-        <Button variant="outline" size="sm" onClick={() => alert("Fitur Export menyusul!")}>
-          <Download className="mr-2 h-4 w-4" />
-          Export
-        </Button>
+        <ExportGuestButton />
       </div>
     </div>
   );
