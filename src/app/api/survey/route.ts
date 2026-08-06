@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     const preparedAnswers = answers.map((item: { questionId: string; score: number }) => {
       // Cari pertanyaan berdasarkan ID asli atau unsurCode/indeks
       const matchedQuestion = dbQuestions.find(
-        (q) => q.id === item.questionId || q.unsurCode === item.questionId
+        (q: (typeof dbQuestions)[number]) => q.id === item.questionId || q.unsurCode === item.questionId
       );
 
       // Jika tidak cocok langsung, ambil pertanyaan berdasarkan urutan indeks jika dikirim angka
@@ -77,10 +77,13 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Error saving survey:', error);
+    
+    const errorMessage = error instanceof Error ? error.message : 'Terjadi kesalahan pada server saat menyimpan survei.';
+
     return NextResponse.json(
-      { message: error.message || 'Terjadi kesalahan pada server saat menyimpan survei.' },
+      { message: errorMessage },
       { status: 500 }
     );
   }
