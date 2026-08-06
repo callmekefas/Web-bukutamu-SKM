@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Edit, EyeOff, CheckCircle, Sparkles, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 import { updateQuestion, seedDefaultQuestions, deleteQuestion } from "@/lib/actions/questions";
 import { SKMCategory } from "@prisma/client";
