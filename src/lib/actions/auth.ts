@@ -8,9 +8,14 @@ import bcrypt from 'bcryptjs'; // <-- Tambahkan ini
 export async function loginAction(prevState: { error?: string } | null, formData: FormData) {
   const username = formData.get('username') as string;
   const password = formData.get('password') as string;
+  const recaptchaToken = formData.get('g-recaptcha-response') as string;
 
   if (!username || !password) {
     return { error: 'Username dan Password wajib diisi!' };
+  }
+
+  if (!recaptchaToken) {
+    return { error: 'Harap centang kotak reCAPTCHA terlebih dahulu!' };
   }
 
   try {
@@ -59,3 +64,4 @@ export async function logoutAction() {
   await destroySession();
   redirect('/login');
 }
+

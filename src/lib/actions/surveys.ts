@@ -26,6 +26,30 @@ export async function submitSurvey(data: {
   console.log("=== 1. DATA DITERIMA DARI FORM ===", data);
   
   try {
+    // Membuat limit 1 hari sekali isi survei per nomor WhatsApp
+    const startOfToday = new Date();
+    startOfToday.setHours(0, 0, 0, 0); 
+
+    const existingSurveyToday = await prisma.surveyResponse.findFirst({
+      where: {
+        guestBook: { 
+          whatsapp: data.whatsapp 
+        },
+        createdAt: {
+          gte: startOfToday 
+        }
+      }
+    });
+
+    if (existingSurveyToday) {
+      console.log("=== X. DITOLAK: NOMOR WA SUDAH MENGISI HARI INI ===");
+      return { 
+        success: false, 
+        message: "Anda telah mtelah mengisi survei hari ini. Silakan coba lagi besok. Terima Kasih" 
+      };
+    }
+
+    // Lanjut ke logika aslimu jika lolos pengecekan
     const guest = await prisma.guestBook.findFirst({
       where: { whatsapp: data.whatsapp },
       orderBy: { createdAt: 'desc' },

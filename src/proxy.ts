@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // 1. Cek apakah ada cookie sesi login milik admin
   // (Pastikan nama cookie ini sama dengan yang kamu buat saat proses login)
   const session = request.cookies.get('admin_session')?.value;

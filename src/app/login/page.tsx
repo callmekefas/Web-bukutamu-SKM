@@ -1,25 +1,30 @@
 // src/app/login/page.tsx
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { loginAction } from '@/lib/actions/auth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Lock, User } from 'lucide-react';
+import { Lock, User, ArrowLeft } from 'lucide-react';
 
 export default function LoginPage() {
   const [state, formAction, isPending] = useActionState(loginAction, null);
+  
+  // Referensi ini berguna jika kita ingin mereset reCAPTCHA 
+  // (misalnya ketika password salah, pengguna harus mencentang ulang)
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 p-4">
       <Card className="w-full max-w-md shadow-lg border-slate-200">
         <CardHeader className="space-y-6 pb-0">
-          
-          {/* --- Bagian Logo & Nama Instansi (Menyamping) --- */}
+
+          {/* --- Bagian Logo & Nama Instansi --- */}
           <div className="flex items-center gap-4">
-            {/* Box Logo dengan sedikit rounding */}
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 bg-blue-50/50 rounded-2xl border border-blue-100 shadow-sm p-2">
               <Image
                 src="/logo.png" 
@@ -30,7 +35,6 @@ export default function LoginPage() {
               />
             </div>
             
-            {/* Teks Instansi rata kiri */}
             <div className="flex flex-col text-left">
               <h2 className="text-[10px] sm:text-[13px] font-semibold text-slate-800 leading-snug tracking-wide">
                 DINAS KOMUNIKASI,INFORMATIKA, PERSANDIAN,DAN STATISTIKA
@@ -89,6 +93,15 @@ export default function LoginPage() {
                   required
                 />
               </div>
+            </div>
+
+            {/* --- FITUR 2: Widget reCAPTCHA --- */}
+            <div className="flex justify-center pt-2">
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                // Ganti value ini dengan Site Key milikmu atau ambil dari file .env
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "KODE_SITE_KEY_DARI_GOOGLE"} 
+              />
             </div>
 
             <Button type="submit" className="w-full mt-4" disabled={isPending}>
