@@ -45,7 +45,7 @@ export async function submitSurvey(data: {
       console.log("=== X. DITOLAK: NOMOR WA SUDAH MENGISI HARI INI ===");
       return { 
         success: false, 
-        message: "Anda telah mtelah mengisi survei hari ini. Silakan coba lagi besok. Terima Kasih" 
+        message: "Anda telah mengisi survei hari ini. Silakan coba lagi besok. Terima Kasih" 
       };
     }
 

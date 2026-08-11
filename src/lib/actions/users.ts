@@ -34,7 +34,34 @@ export async function createUser(formData: FormData) {
   redirect("/dashboard/users");
 }
 
-// 2. Hapus User
+// 2. Edit / Perbarui User (Fungsi Baru yang Ditambahkan)
+export async function updateUser(id: string, data: { name?: string; username?: string; password?: string }) {
+  try {
+    // Definisi tipe data yang spesifik agar terhindar dari error 'any'
+    const updateData: { name?: string; username?: string; password?: string } = {};
+    
+    if (data.name) updateData.name = data.name;
+    if (data.username) updateData.username = data.username;
+    
+    // Jika password diisi (tidak kosong), enkripsi ulang dengan bcrypt
+    if (data.password && data.password.trim() !== "") {
+      updateData.password = await bcrypt.hash(data.password, 10);
+    }
+
+    await prisma.user.update({
+      where: { id },
+      data: updateData,
+    });
+
+    revalidatePath("/dashboard/users");
+    return { success: true, message: "Akun berhasil diperbarui!" };
+  } catch (error) {
+    console.error("Gagal memperbarui user:", error);
+    return { success: false, message: "Gagal memperbarui akun. Username mungkin sudah digunakan." };
+  }
+}
+
+// 3. Hapus User
 export async function deleteUser(id: string) {
   try {
     const session = await getSession();
