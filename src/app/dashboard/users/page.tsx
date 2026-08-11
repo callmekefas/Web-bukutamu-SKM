@@ -1,17 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { UserPlus, ShieldAlert, ShieldCheck, LockIcon } from "lucide-react";
-// Perhatikan: Kita ganti requireSuperAdmin menjadi getSession
 import { getSession } from "@/lib/auth"; 
 import DeleteUserButton from "@/components/DeleteUserButton";
+import EditUserButton from "@/components/EditUserButton"; // Sesuaikan path ini jika kamu menaruhnya di folder lain
 
 export default async function UsersPage() {
-  // 1. AMBIL DATA SESI USER SAAT INI
   const session = await getSession();
 
-  // ==========================================
-  // 2. LAYAR ALERT JIKA BUKAN SUPER ADMIN
-  // ==========================================
   if (session?.role !== "SUPER_ADMIN") {
     return (
       <div className="flex flex-col items-center justify-center min-h-[65vh] text-center animate-in zoom-in-95 duration-500">
@@ -32,9 +28,6 @@ export default async function UsersPage() {
     );
   }
 
-  // ==========================================
-  // 3. TAMPILAN TABEL JIKA DIA SUPER ADMIN
-  // ==========================================
   const users = await prisma.user.findMany({
     orderBy: { role: 'desc' }, 
   });
@@ -62,7 +55,7 @@ export default async function UsersPage() {
                 <th className="px-6 py-4">Nama Lengkap</th>
                 <th className="px-6 py-4">Username</th>
                 <th className="px-6 py-4 text-center">Role / Hak Akses</th>
-                <th className="px-6 py-4 text-center w-24">Aksi</th>
+                <th className="px-6 py-4 text-center w-32">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100">
@@ -88,10 +81,14 @@ export default async function UsersPage() {
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-center">
+                      
+                      {/* INI BAGIAN YANG DIUBAH: Panggil Komponen EditUserButton */}
+                      <EditUserButton user={{ id: user.id, name: user.name, username: user.username }} />
+
                       {user.id !== session.userId ? (
                         <DeleteUserButton userId={user.id} />
                       ) : (
-                        <span className="text-xs text-slate-400 font-medium cursor-not-allowed" title="Tidak bisa menghapus akun sendiri">
+                        <span className="text-xs text-slate-400 font-medium cursor-not-allowed ml-2" title="Tidak bisa menghapus akun sendiri">
                           Aktif
                         </span>
                       )}

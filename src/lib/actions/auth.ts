@@ -15,7 +15,7 @@ export async function loginAction(prevState: { error?: string } | null, formData
   }
 
   if (!recaptchaToken) {
-    return { error: 'Harap centang kotak reCAPTCHA terlebih dahulu!' };
+    return { error: 'Harap verifikasi reCAPTCHA terlebih dahulu!' };
   }
 
   try {
