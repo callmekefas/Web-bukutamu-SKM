@@ -82,7 +82,7 @@ export default async function UsersPage() {
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-center">
                       
-                      {/* INI BAGIAN YANG DIUBAH: Panggil Komponen EditUserButton */}
+                      {/* Panggil Komponen EditUserButton */}
                       <EditUserButton user={{ id: user.id, name: user.name, username: user.username }} />
 
                       {user.id !== session.userId ? (

@@ -218,7 +218,7 @@ export default async function StatistikPage() {
           </div>
         </div>
 
-        {/* --- TAMBAHAN FITUR: GRAFIK DIAGRAM BATANG --- */}
+        {/* --- GRAFIK DIAGRAM BATANG --- */}
         <div className="bg-white rounded-[2rem] shadow-sm border border-slate-100 p-6 sm:p-8 space-y-4">
           <div className="flex items-center gap-3">
             <div className="w-1.5 h-6 bg-blue-600 rounded-full"></div>

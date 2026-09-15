@@ -29,13 +29,13 @@ export async function loginAction(prevState: { error?: string } | null, formData
       return { error: 'Username atau Password salah!' };
     }
 
-    // 3. Bandingkan password menggunakan bcrypt (PENTING!)
+    // 3. Bandingkan password menggunakan bcrypt 
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     // 4. Jika password salah (termasuk jika admin lama passwordnya belum di-hash)
     if (!isPasswordValid) {
-      // OPSI FALLBACK UNTUK ADMIN LAMA (Penting agar kamu tidak terkunci)
-      // Jika password text biasa sama dengan di database (belum di-hash)
+      // OPSI FALLBACK UNTUK ADMIN LAMA 
+      // Jika password text biasa sama dengan di database 
       if (user.password === password) {
         // Loloskan login kali ini
       } else {

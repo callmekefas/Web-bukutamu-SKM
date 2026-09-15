@@ -5,7 +5,6 @@ import { Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "@/components/ui/sheet";
-// Pastikan path import ini sesuai dengan lokasi file action kamu (users.ts)
 import { updateUser } from "@/lib/actions/users";
 
 export default function EditUserButton({ user }: { user: { id: string; name: string; username: string } }) {

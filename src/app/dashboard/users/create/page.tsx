@@ -4,7 +4,7 @@ import { createUser } from "@/lib/actions/users";
 import { requireSuperAdmin } from "@/lib/auth";
 
 export default async function CreateUserPage() {
-  // KUNCI HALAMAN: Hanya Super Admin yang boleh masuk!
+  // KUNCI HALAMAN: Hanya Super Admin 
   await requireSuperAdmin();
 
   return (

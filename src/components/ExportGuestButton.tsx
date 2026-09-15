@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Download, Calendar, Loader2, X } from "lucide-react";
 import * as XLSX from "xlsx";
-// Pastikan file ini sudah kamu buat dari instruksiku sebelumnya
 import { getExportData } from "@/lib/actions/reports"; 
 
 export default function ExportGuestButton() {

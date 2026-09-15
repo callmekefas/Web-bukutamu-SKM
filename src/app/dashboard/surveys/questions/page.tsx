@@ -12,9 +12,7 @@ export default async function SurveyQuestionsPage() {
   return (
     <div className="space-y-6">
       
-      {/* ========================================== */}
       {/* HEADER HALAMAN */}
-      {/* ========================================== */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-slate-900">Manajemen Pertanyaan</h1>
@@ -32,9 +30,7 @@ export default async function SurveyQuestionsPage() {
         </div>
       </div>
 
-      {/* ========================================== */}
       {/* RENDER TABEL & MODAL EDIT (Client Side) */}
-      {/* ========================================== */}
       <QuestionClient initialData={questions} />
       
     </div>
