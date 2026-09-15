@@ -14,7 +14,7 @@ export default async function StatistikPage() {
     },
   });
 
-  // Kamus definisi & penjelasan tujuan per kategori
+  //definisi & penjelasan tujuan per kategori
   const categoryDetails: Record<string, { label: string; code: string; description: string }> = {
     U1_PERSYARATAN: { 
       code: "U1", 
@@ -164,7 +164,7 @@ export default async function StatistikPage() {
           </Link>
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Statistik Layanan Publik</h1>
-            <p className="text-slate-500 text-sm font-medium mt-1">Transparansi Indeks Kepuasan Masyarakat (IKM) Berbasis 9 Unsur Kategori</p>
+            <p className="text-slate-500 text-sm font-medium mt-1"></p>
           </div>
         </div>
 
@@ -181,7 +181,7 @@ export default async function StatistikPage() {
           <div className="relative z-10 p-8 sm:p-14 flex flex-col items-center justify-center text-center space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
               <Activity className="w-4 h-4 text-blue-400 animate-pulse" />
-              <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">Skor IKM Akhir</span>
+              <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">Skor Akhir</span>
             </div>
             
             <div className="text-7xl sm:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-slate-400 tracking-tighter drop-shadow-sm">
@@ -223,8 +223,7 @@ export default async function StatistikPage() {
           <div className="flex items-center gap-3">
             <div className="w-1.5 h-6 bg-blue-600 rounded-full"></div>
             <div>
-              <h2 className="text-xl font-extrabold text-slate-900">Grafik Nilai Rata-Rata Per Unsur</h2>
-              <p className="text-xs text-slate-500">Visualisasi skor perbandingan ke-9 kategori keranjang pelaporan</p>
+              <h2 className="text-xl font-extrabold text-slate-900">Grafik Nilai Rata-Rata</h2>
             </div>
           </div>
           <StatsClientChart data={chartData} />
@@ -234,7 +233,7 @@ export default async function StatistikPage() {
         <div className="space-y-6">
           <div className="flex items-center gap-3 px-2">
             <div className="w-1.5 h-6 bg-blue-600 rounded-full"></div>
-            <h2 className="text-xl font-extrabold text-slate-900">Rincian Per Kategori Unsur (U1 - U9)</h2>
+            <h2 className="text-xl font-extrabold text-slate-900">Rincian Penilaian</h2>
           </div>
           
           <div className="grid gap-4">

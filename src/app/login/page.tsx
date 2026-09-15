@@ -100,7 +100,7 @@ export default function LoginPage() {
               <ReCAPTCHA
                 ref={recaptchaRef}
                 // Ganti value ini dengan Site Key milikmu atau ambil dari file .env
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6Ld6538tAAAAAPY9Z_o-T7jmqgYI2_8ppdW6EajP"} 
+                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
               />
             </div>
 
