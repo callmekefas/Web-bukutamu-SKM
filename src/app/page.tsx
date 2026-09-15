@@ -63,7 +63,7 @@ export default function HomePage() {
           <div className="pt-2 hidden sm:block">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl text-xs font-medium text-cyan-100 border border-white/15">
               <Building2 className="w-4 h-4 text-cyan-300" />
-              <span>Layanan Resepsionis Digital Diskominfo</span>
+              <span>Layanan Digital Diskominfo</span>
             </div>
           </div>
 
@@ -78,7 +78,7 @@ export default function HomePage() {
 
       {/* 
         SECTION 2: MENU UTAMA 
-        - HP: Berada di bawah banner dengan margin top positif (lega)
+        - HP: Berada di bawah banner dengan margin top positif
         - Desktop: Lebar 7/12 (58%), kontainer max-w-xl agar tombol pas & mantap
       */}
       <section className="lg:w-7/12 w-full p-6 sm:p-10 lg:p-16 flex flex-col justify-center items-center lg:min-h-screen bg-slate-50 relative z-20">
