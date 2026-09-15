@@ -3,9 +3,78 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  username  String   @unique
+  password  String
+  role      Role     @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model GuestBook {
+  id             String          @id @default(cuid())
+  fullName       String
+  whatsapp       String
+  age            Int
+  gender         Gender
+  education      Education
+  occupation     String
+  service        ServiceCategory
+  customService  String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  surveyResponse SurveyResponse?
+
+  @@index([createdAt])
+  @@index([service])
+}
+
+model SurveyQuestion {
+  id           String         @id @default(cuid())
+  unsurCode    String         @unique
+  question     String
+  category     SKMCategory    @default(U1_PERSYARATAN)
+  displayOrder Int
+  isActive     Boolean        @default(true)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  answers      SurveyAnswer[]
+
+  @@index([displayOrder])
+  @@index([isActive])
+}
+
+model SurveyResponse {
+  id          String         @id @default(cuid())
+  guestBookId String         @unique
+  feedback    String?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  answers     SurveyAnswer[]
+  guestBook   GuestBook      @relation(fields: [guestBookId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+}
+
+model SurveyAnswer {
+  id         String         @id @default(cuid())
+  responseId String
+  questionId String
+  score      Int
+  createdAt  DateTime       @default(now())
+  question   SurveyQuestion @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  response   SurveyResponse @relation(fields: [responseId], references: [id], onDelete: Cascade)
+
+  @@unique([responseId, questionId])
+  @@index([responseId])
+  @@index([questionId])
 }
 
 enum Role {
