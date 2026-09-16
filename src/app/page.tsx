@@ -139,7 +139,7 @@ export default function HomePage() {
                       Survei Kepuasan (SKM)
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                      Berikan penilaian pelayanan 9 unsur PermenPANRB
+                      Berikan penilaian pelayanan
                     </p>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export default function HomePage() {
                     <ShieldCheck className="w-6 h-6" />
                   </div>
                   <div>
-                    <h3 className="text-sm sm:text-base font-semibold">Portal Admin & Petugas</h3>
+                    <h3 className="text-sm sm:text-base font-semibold">Portal Admin </h3>
                     <p className="text-xs text-slate-400 mt-0.5">Masuk untuk rekapitulasi data & laporan IKM</p>
                   </div>
                 </div>
