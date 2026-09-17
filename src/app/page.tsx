@@ -139,7 +139,7 @@ export default function HomePage() {
                       Survei Kepuasan (SKM)
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                      Berikan penilaian pelayanan
+                      Berikan penilaian pelayanan kami terhadap anda
                     </p>
                   </div>
                 </div>

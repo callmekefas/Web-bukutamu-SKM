@@ -23,10 +23,12 @@ export default function StatsClientChart({ data }: { data: ChartItem[] }) {
         <BarChart data={formattedData} margin={{ top: 10, right: 10, left: -20, bottom: 10 }}>
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
           <XAxis 
-            dataKey="shortLabel" 
-            interval={0}
-            tick={{ fill: "#64748b", fontSize: 12, fontWeight: 700 }} 
-          />
+  dataKey="shortLabel"
+  interval={0}
+  axisLine={false}
+  tickLine={false}
+  tick={false}
+/>
           <YAxis 
             domain={[0, 4]} 
             tick={{ fill: "#64748b", fontSize: 11 }} 

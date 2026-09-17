@@ -250,9 +250,6 @@ export default async function StatistikPage() {
                   <div className="flex flex-col sm:flex-row justify-between sm:items-start gap-6">
                     
                     <div className="flex-1 space-y-2">
-                      <span className="inline-flex px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-lg tracking-wider">
-                        {stat.code}
-                      </span>
                       <h3 className="text-lg font-bold text-slate-900">
                         {stat.label}
                       </h3>
@@ -263,7 +260,7 @@ export default async function StatistikPage() {
                     
                     <div className="flex items-end gap-6 shrink-0">
                       <div>
-                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Skor NRR</p>
+                        <p className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Skor</p>
                         <p className="text-xl font-bold text-slate-700">{stat.nrr} <span className="text-sm font-normal text-slate-400">/ 4</span></p>
                       </div>
                       <div className="text-right">
